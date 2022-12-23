@@ -16,7 +16,6 @@ public class UIManager : MonoBehaviour
 
     [Space(10)]
     [SerializeField] Text scoreText;
-    [SerializeField] Text finalScoreText;
 
     public Transform border;
 
@@ -29,7 +28,7 @@ public class UIManager : MonoBehaviour
     {
         Block.OnCollisionEnter += () =>
         {
-            scoreText.text = finalScoreText.text = $"{++score}";
+            scoreText.text = $"{++score}";
         };
     }
 
