@@ -38,34 +38,6 @@ public class GameManager : MonoBehaviour
         };
     }
 
-    private void CreateLine()
-    {
-        Block[] blocks = FindObjectsOfType<Block>();
-        foreach(Block b in blocks)
-        {
-            b.MoveDown();
-        }
-        
-        float blockSize = 0.5f;
-        float padding = 0.1f;
-
-        float screenWorldWidth = Camera.main.ScreenToWorldPoint(new Vector3(Screen.width, 0, 0)).x;
-
-        int blockCount = Mathf.RoundToInt(screenWorldWidth * 2 / (blockSize + padding));
-        float xStart = -screenWorldWidth + (blockCount == 9 ? 0.4f : 0.325f);
-
-        for(int i = 0; i < blockCount; i++)
-        {
-            if (Random.Range(0, 100) < 15)
-            {
-                continue;
-            }
-
-            Vector2 position = new Vector2(xStart + i * (blockSize + padding), GameObject.Find("topBorder").transform.position.y - 0.2f);
-            Instantiate(BlockPrefab, position, Quaternion.identity, EnvironmentRef);
-        }
-    }
-
     public void Shoot()
     {
         if (Time.time > nextFire)
@@ -77,14 +49,11 @@ public class GameManager : MonoBehaviour
 
     public void StartGame()
     {
-        InvokeRepeating(nameof(CreateLine), 0.0f, 3.0f);
         Instantiate(PlayerPrefab, EnvironmentRef);
     }
 
     public void EndGame()
     {
-        CancelInvoke(nameof(CreateLine));
-
         if (FindObjectOfType<Player>())
         {
             Destroy(FindObjectOfType<Player>().gameObject);
