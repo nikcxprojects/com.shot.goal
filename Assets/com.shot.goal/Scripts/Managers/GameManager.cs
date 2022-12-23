@@ -65,8 +65,8 @@ public class GameManager : MonoBehaviour
             Destroy(b.gameObject);
         }
 
-        Bullet[] bullets = FindObjectsOfType<Bullet>();
-        foreach(Bullet b in bullets)
+        Ball[] bullets = FindObjectsOfType<Ball>();
+        foreach(Ball b in bullets)
         {
             Destroy(b.gameObject);
         }

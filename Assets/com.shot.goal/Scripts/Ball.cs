@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class Bullet : MonoBehaviour
+public class Ball : MonoBehaviour
 {
     private int health = 10;
     public int Health
