@@ -13,7 +13,7 @@ PlayerSettings:
   useOnDemandResources: 0
   accelerometerFrequency: 60
   companyName: DefaultCompany
-  productName: Fair Ball Blocks
+  productName: Shot Goal
   defaultCursor: {fileID: 0}
   cursorHotspot: {x: 0, y: 0}
   m_SplashScreenBackgroundColor: {r: 0, g: 0, b: 0, a: 1}
@@ -154,7 +154,7 @@ PlayerSettings:
   androidSupportedAspectRatio: 1
   androidMaxAspectRatio: 2.1
   applicationIdentifier:
-    Android: com.fair.ball.blocks
+    Android: com.shot.goal
     Standalone: com.DefaultCompany.2DProject
   buildNumber:
     Standalone: 0
@@ -249,7 +249,7 @@ PlayerSettings:
   AndroidSplashScreenScale: 0
   androidSplashScreen: {fileID: 0}
   AndroidKeystoreName: '{inproject}: user.keystore'
-  AndroidKeyaliasName: dilor
+  AndroidKeyaliasName: rausd
   AndroidBuildApkPerCpuArchitecture: 0
   AndroidTVCompatibility: 0
   AndroidIsGame: 1
@@ -272,7 +272,7 @@ PlayerSettings:
   - m_BuildTarget: 
     m_Icons:
     - serializedVersion: 2
-      m_Icon: {fileID: 2800000, guid: f1459032f05acc84599ecba79907d897, type: 3}
+      m_Icon: {fileID: 2800000, guid: 8dfa2c5e887f2ba4f8cb79e206ad44b8, type: 3}
       m_Width: 128
       m_Height: 128
       m_Kind: 0
