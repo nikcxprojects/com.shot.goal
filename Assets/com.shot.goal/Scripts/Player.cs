@@ -12,6 +12,16 @@ public class Player : MonoBehaviour
         transform.position = new Vector2(0, FindObjectOfType<UIManager>().border.position.y + 1.35f);
     }
 
+    private void OnMouseDrag()
+    {
+        if (Time.timeScale < 1)
+        {
+            return;
+        }
+
+        transform.position = new Vector2(_camera.ScreenToWorldPoint(Input.mousePosition).x, transform.position.y);
+    }
+
     private void Update()
     {
         if(Time.timeScale < 1)
