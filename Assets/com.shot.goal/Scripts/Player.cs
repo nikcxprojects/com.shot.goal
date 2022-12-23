@@ -9,7 +9,7 @@ public class Player : MonoBehaviour
     private void Awake()
     {
         _camera = Camera.main;
-        transform.position = new Vector2(0, FindObjectOfType<UIManager>().border.position.y + 0.95f);
+        transform.position = new Vector2(0, FindObjectOfType<UIManager>().border.position.y + 1.35f);
     }
 
     private void Update()
@@ -26,6 +26,5 @@ public class Player : MonoBehaviour
         toInput.y = Mathf.Clamp(toInput.y, 0.2f, 1);
 
         Velocity = toInput;
-        transform.GetChild(0).up = toInput;
     }
 }

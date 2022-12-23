@@ -11,11 +11,9 @@ public class Block : MonoBehaviour
         set
         {
             health = value;
-            TextComponent.text = $"{health}";
 
             if(health <= 0)
             {
-                TextComponent.enabled = false;
                 GetComponent<Rigidbody2D>().isKinematic = false;
                 GetComponent<BoxCollider2D>().enabled = false;
                 Destroy(gameObject, 2.0f);
@@ -25,14 +23,11 @@ public class Block : MonoBehaviour
 
     private Animation Animation { get; set; }
 
-    private TextMeshPro TextComponent { get; set; }
-
     public static Action OnCollisionEnter { get; set; }
 
     private void Start()
     {
         Animation = GetComponent<Animation>();
-        TextComponent = GetComponentInChildren<TextMeshPro>();
         Health = UnityEngine.Random.Range(1, 10);
     }
 
