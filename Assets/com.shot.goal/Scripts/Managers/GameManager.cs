@@ -53,10 +53,8 @@ public class GameManager : MonoBehaviour
         ElapsedSeconds -= Time.deltaTime;
     }
 
-    public void StartGame()
+    public void DestroyOld()
     {
-        ElapsedSeconds = initTime;
-
         if (FindObjectOfType<Player>())
         {
             Destroy(FindObjectOfType<Player>().gameObject);
@@ -76,6 +74,13 @@ public class GameManager : MonoBehaviour
         {
             Destroy(FindObjectOfType<Ball>().gameObject);
         }
+    }
+
+    public void StartGame()
+    {
+        ElapsedSeconds = initTime;
+
+        DestroyOld();
 
         Instantiate(PlayerPrefab, EnvironmentRef);
         Instantiate(GoalPrefab, EnvironmentRef);
@@ -98,25 +103,7 @@ public class GameManager : MonoBehaviour
     {
         GameStarted = false;
 
-        if (FindObjectOfType<Player>())
-        {
-            Destroy(FindObjectOfType<Player>().gameObject);
-        }
-
-        if (FindObjectOfType<Goal>())
-        {
-            Destroy(FindObjectOfType<Goal>().gameObject);
-        }
-
-        if (FindObjectOfType<Level>())
-        {
-            Destroy(FindObjectOfType<Level>().gameObject);
-        }
-
-        if (FindObjectOfType<Ball>())
-        {
-            Destroy(FindObjectOfType<Ball>().gameObject);
-        }
+        DestroyOld();
 
         uiManager.OpenWindow(5);
     }

@@ -48,7 +48,7 @@ public class UIManager : MonoBehaviour
         OpenWindow(0);
         game.SetActive(false);
 
-        GameManager.Instance.EndGame();
+        GameManager.Instance.DestroyOld();
     }
 
     public void StartGameOnClick()
