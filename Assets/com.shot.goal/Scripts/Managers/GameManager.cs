@@ -57,6 +57,26 @@ public class GameManager : MonoBehaviour
     {
         ElapsedSeconds = initTime;
 
+        if (FindObjectOfType<Player>())
+        {
+            Destroy(FindObjectOfType<Player>().gameObject);
+        }
+
+        if (FindObjectOfType<Goal>())
+        {
+            Destroy(FindObjectOfType<Goal>().gameObject);
+        }
+
+        if (FindObjectOfType<Level>())
+        {
+            Destroy(FindObjectOfType<Level>().gameObject);
+        }
+
+        if (FindObjectOfType<Ball>())
+        {
+            Destroy(FindObjectOfType<Ball>().gameObject);
+        }
+
         Instantiate(PlayerPrefab, EnvironmentRef);
         Instantiate(GoalPrefab, EnvironmentRef);
         Instantiate(LevelPrefab, EnvironmentRef);
