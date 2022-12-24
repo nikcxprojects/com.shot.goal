@@ -31,6 +31,11 @@ public class Player : MonoBehaviour
 
         if(Input.GetMouseButtonDown(0))
         {
+            if(transform.GetChild(0).gameObject.activeSelf)
+            {
+                transform.GetChild(0).gameObject.SetActive(false);
+            }
+
             GameManager.Instance.ThrowBall();
         }
 

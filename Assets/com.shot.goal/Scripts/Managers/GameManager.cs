@@ -4,12 +4,18 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager Instance { get => FindObjectOfType<GameManager>(); }
 
+    private bool GameStarted { get; set; }
+
+
     private Player PlayerPrefab { get; set; }
     private Goal GoalPrefab { get; set; }
     private Level LevelPrefab { get; set; }
     private Ball BallPrefab { get; set; }
 
     private Transform EnvironmentRef { get; set; }
+
+    private const int initTime = 300;
+    public float ElapsedSeconds { get; private set; }
 
     public UIManager uiManager;
 
@@ -37,20 +43,41 @@ public class GameManager : MonoBehaviour
         };
     }
 
+    private void Update()
+    {
+        if(Time.timeScale <= 0 || !GameStarted)
+        {
+            return;
+        }
+
+        ElapsedSeconds -= Time.deltaTime;
+    }
+
     public void StartGame()
     {
+        ElapsedSeconds = initTime;
+
         Instantiate(PlayerPrefab, EnvironmentRef);
         Instantiate(GoalPrefab, EnvironmentRef);
         Instantiate(LevelPrefab, EnvironmentRef);
+
+        GameStarted = true;
     }
 
     public void ThrowBall()
     {
+        if(FindObjectOfType<Ball>())
+        {
+            return;
+        }
+
         Instantiate(BallPrefab, EnvironmentRef);
     }
 
     public void EndGame()
     {
+        GameStarted = false;
+
         if (FindObjectOfType<Player>())
         {
             Destroy(FindObjectOfType<Player>().gameObject);

@@ -37,14 +37,7 @@ public class Block : MonoBehaviour
 
     private void OnCollisionEnter2D()
     {
-        if (Animation.isPlaying)
-        {
-            Animation.Stop();
-        }
-
-        Animation.Play();
         OnCollisionEnter?.Invoke();
-
         Health--;
     }
 }
