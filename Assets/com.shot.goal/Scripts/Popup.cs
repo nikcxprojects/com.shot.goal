@@ -9,7 +9,7 @@ public class Popup : MonoBehaviour
     [SerializeField] Sprite winSprite;
     [SerializeField] Sprite loseSprite;
 
-    private void Start()
+    private void Awake()
     {
         UIManager.OnGameEnd += (IsWin) =>
         {

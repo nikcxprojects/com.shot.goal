@@ -9,6 +9,16 @@ public class Goal : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        if(!collision.CompareTag("ball"))
+        {
+            return;
+        }
+
         UIManager.CheckResult(true);
+    }
+
+    private void OnDestroy()
+    {
+        UIManager.OnGameEnd = null;
     }
 }
