@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class Ball : MonoBehaviour
 {
-    private const float force = 25;
+    private const float force = 75;
     private Vector2 LastVelocity { get; set; }
     private Rigidbody2D Rigidbody { get; set; }
 

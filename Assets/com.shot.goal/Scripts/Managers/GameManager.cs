@@ -7,7 +7,7 @@ public class GameManager : MonoBehaviour
     private Player PlayerPrefab { get; set; }
     private Goal GoalPrefab { get; set; }
     private Level LevelPrefab { get; set; }
-    private GameObject BallPrefab { get; set; }
+    private Ball BallPrefab { get; set; }
 
     private Transform EnvironmentRef { get; set; }
 
@@ -18,7 +18,7 @@ public class GameManager : MonoBehaviour
         PlayerPrefab = Resources.Load<Player>("player");
         GoalPrefab = Resources.Load<Goal>("goal");
         LevelPrefab = Resources.Load<Level>("level");
-        BallPrefab = Resources.Load<GameObject>("bullet");
+        //BallPrefab = Resources.Load<Ball>("ball");
 
         EnvironmentRef = GameObject.Find("Environment").transform;
     }
