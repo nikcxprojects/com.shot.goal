@@ -17,7 +17,8 @@ public class UIManager : MonoBehaviour
     [Space(10)]
     [SerializeField] Text scoreText;
 
-    public Transform border;
+    public Transform topBorder;
+    public Transform bottomBorder;
 
     private void Awake()
     {

@@ -9,7 +9,7 @@ public class Player : MonoBehaviour
     private void Awake()
     {
         _camera = Camera.main;
-        transform.position = new Vector2(0, FindObjectOfType<UIManager>().border.position.y + 1.35f);
+        transform.position = new Vector2(0, FindObjectOfType<UIManager>().bottomBorder.position.y + 1.35f);
     }
 
     private void OnMouseDrag()

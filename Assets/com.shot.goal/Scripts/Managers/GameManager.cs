@@ -8,6 +8,8 @@ public class GameManager : MonoBehaviour
     private const float fireRate = 0.15f;
 
     private Player PlayerPrefab { get; set; }
+    private Goal GoalPrefab { get; set; }
+    private Level LevelPrefab { get; set; }
     private GameObject BulletPrefab { get; set; }
     private GameObject BlockPrefab { get; set; }
 
@@ -18,6 +20,9 @@ public class GameManager : MonoBehaviour
     private void Awake()
     {
         PlayerPrefab = Resources.Load<Player>("player");
+        GoalPrefab = Resources.Load<Goal>("goal");
+        LevelPrefab = Resources.Load<Level>("level");
+
         BulletPrefab = Resources.Load<GameObject>("bullet");
         BlockPrefab = Resources.Load<GameObject>("block");
 
@@ -50,6 +55,8 @@ public class GameManager : MonoBehaviour
     public void StartGame()
     {
         Instantiate(PlayerPrefab, EnvironmentRef);
+        Instantiate(GoalPrefab, EnvironmentRef);
+        Instantiate(LevelPrefab, EnvironmentRef);
     }
 
     public void EndGame()
@@ -59,16 +66,14 @@ public class GameManager : MonoBehaviour
             Destroy(FindObjectOfType<Player>().gameObject);
         }
 
-        Block[] blocks = FindObjectsOfType<Block>();
-        foreach(Block b in blocks)
+        if (FindObjectOfType<Goal>())
         {
-            Destroy(b.gameObject);
+            Destroy(FindObjectOfType<Goal>().gameObject);
         }
 
-        Ball[] bullets = FindObjectsOfType<Ball>();
-        foreach(Ball b in bullets)
+        if (FindObjectOfType<Level>())
         {
-            Destroy(b.gameObject);
+            Destroy(FindObjectOfType<Level>().gameObject);
         }
 
         uiManager.OpenWindow(5);
