@@ -18,7 +18,7 @@ public class GameManager : MonoBehaviour
         PlayerPrefab = Resources.Load<Player>("player");
         GoalPrefab = Resources.Load<Goal>("goal");
         LevelPrefab = Resources.Load<Level>("level");
-        //BallPrefab = Resources.Load<Ball>("ball");
+        BallPrefab = Resources.Load<Ball>("ball");
 
         EnvironmentRef = GameObject.Find("Environment").transform;
     }
@@ -42,6 +42,10 @@ public class GameManager : MonoBehaviour
         Instantiate(PlayerPrefab, EnvironmentRef);
         Instantiate(GoalPrefab, EnvironmentRef);
         Instantiate(LevelPrefab, EnvironmentRef);
+    }
+
+    public void ThrowBall()
+    {
         Instantiate(BallPrefab, EnvironmentRef);
     }
 

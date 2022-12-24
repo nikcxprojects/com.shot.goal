@@ -27,7 +27,7 @@ public class Block : MonoBehaviour
     private void Start()
     {
         Animation = GetComponent<Animation>();
-        Health = UnityEngine.Random.Range(1, 10);
+        Health = 1;
     }
 
     public void MoveDown()

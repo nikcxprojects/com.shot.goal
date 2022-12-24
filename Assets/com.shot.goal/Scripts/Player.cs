@@ -29,6 +29,11 @@ public class Player : MonoBehaviour
             return;
         }
 
+        if(Input.GetMouseButtonDown(0))
+        {
+            GameManager.Instance.ThrowBall();
+        }
+
         Vector2 toInput = _camera.ScreenToWorldPoint(Input.mousePosition) - transform.position;
         toInput.Normalize();
 
