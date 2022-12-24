@@ -4,14 +4,10 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager Instance { get => FindObjectOfType<GameManager>(); }
 
-    private float nextFire;
-    private const float fireRate = 0.15f;
-
     private Player PlayerPrefab { get; set; }
     private Goal GoalPrefab { get; set; }
     private Level LevelPrefab { get; set; }
-    private GameObject BulletPrefab { get; set; }
-    private GameObject BlockPrefab { get; set; }
+    private GameObject BallPrefab { get; set; }
 
     private Transform EnvironmentRef { get; set; }
 
@@ -22,9 +18,7 @@ public class GameManager : MonoBehaviour
         PlayerPrefab = Resources.Load<Player>("player");
         GoalPrefab = Resources.Load<Goal>("goal");
         LevelPrefab = Resources.Load<Level>("level");
-
-        BulletPrefab = Resources.Load<GameObject>("bullet");
-        BlockPrefab = Resources.Load<GameObject>("block");
+        BallPrefab = Resources.Load<GameObject>("bullet");
 
         EnvironmentRef = GameObject.Find("Environment").transform;
     }
@@ -43,20 +37,12 @@ public class GameManager : MonoBehaviour
         };
     }
 
-    public void Shoot()
-    {
-        if (Time.time > nextFire)
-        {
-            nextFire = Time.time + fireRate;
-            Instantiate(BulletPrefab, EnvironmentRef);
-        }
-    }
-
     public void StartGame()
     {
         Instantiate(PlayerPrefab, EnvironmentRef);
         Instantiate(GoalPrefab, EnvironmentRef);
         Instantiate(LevelPrefab, EnvironmentRef);
+        Instantiate(BallPrefab, EnvironmentRef);
     }
 
     public void EndGame()
@@ -74,6 +60,11 @@ public class GameManager : MonoBehaviour
         if (FindObjectOfType<Level>())
         {
             Destroy(FindObjectOfType<Level>().gameObject);
+        }
+
+        if (FindObjectOfType<Ball>())
+        {
+            Destroy(FindObjectOfType<Ball>().gameObject);
         }
 
         uiManager.OpenWindow(5);

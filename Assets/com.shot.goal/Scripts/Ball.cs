@@ -2,20 +2,6 @@ using UnityEngine;
 
 public class Ball : MonoBehaviour
 {
-    private int health = 10;
-    public int Health
-    {
-        get => health;
-        set 
-        {
-            health = value;
-            if(health <= 0)
-            {
-                Destroy(gameObject);
-            }
-        }
-    }
-
     private const float force = 25;
     private Vector2 LastVelocity { get; set; }
     private Rigidbody2D Rigidbody { get; set; }
@@ -27,10 +13,8 @@ public class Ball : MonoBehaviour
 
     private void Start()
     {
-        transform.position = FindObjectOfType<Player>().transform.position;
+        transform.position = FindObjectOfType<Player>().transform.position + Vector3.up * 0.25f;
         Rigidbody.velocity = Player.Velocity.normalized * force;
-
-        Destroy(gameObject, 2.0f);
     }
 
     private void Update()
@@ -44,7 +28,5 @@ public class Ball : MonoBehaviour
 
         Vector2 direction = Vector2.Reflect(LastVelocity.normalized, collision.contacts[0].normal);
         Rigidbody.velocity = direction * Mathf.Max(speed, 0);
-
-        Health--;
     }
 }
