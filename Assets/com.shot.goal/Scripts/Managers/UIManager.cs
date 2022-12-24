@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -22,6 +23,8 @@ public class UIManager : MonoBehaviour
     public Transform topBorder;
     public Transform bottomBorder;
 
+    public static Action<bool> OnGameEnd { get; set; }
+
     private void Awake()
     {
         OpenWindow(0);
@@ -33,6 +36,12 @@ public class UIManager : MonoBehaviour
         {
             scoreText.text = $"{++score}";
         };
+    }
+
+    public static void CheckResult(bool IsWin)
+    {
+        Instantiate(Resources.Load<Popup>("popup"), GameObject.Find("main canvas").transform);
+        OnGameEnd?.Invoke(IsWin);
     }
 
     private void Update()
